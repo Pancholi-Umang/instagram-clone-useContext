@@ -17,10 +17,10 @@ const Create = () => {
   const [image, setImage] = useState("");
   const { create } = useContext(providedata);
   let { name, id } = LocalStorageCartItem();
-  console.log(image);
-  //create function ne context.jsx ma banavayu chhe tene value mathii export karavyu chhe and ahithi data pass thay chhe
+ 
   const createPost = (e) => {
-    e.preventDefault();
+      e.preventDefault();
+      //create function ne context.jsx ma banavayu chhe tene value mathii export karavyu chhe and ahithi data pass thay chhe
     create({ text, image, name, id });
     setImage("");
     setText("")
@@ -76,7 +76,7 @@ const Create = () => {
               style={{ fontSize: "27px", color: "black", cursor: "pointer" }}
               className="bi bi-camera"
             ></i>
-          </label>{" "}
+          </label>
           <button className="btn btn-sm btn-outline-dark" type="submit">
             Add Post...
           </button>
@@ -84,7 +84,7 @@ const Create = () => {
             type="file"
             className="d-none"
             id="fileInput"
-            accept=".jpg, .jpeg, .png"
+            // accept=".jpg, .jpeg, .png, .webp"
             onChange={handleImage}
             required
           />
