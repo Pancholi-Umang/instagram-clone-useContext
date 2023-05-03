@@ -14,7 +14,7 @@ const LocalStorageCartItem = () => {
 const Protected = ({ Component }) => {
   const data = LocalStorageCartItem();
   const navigate = useNavigate();
-  console.log(data)
+
   useEffect(() => {
     if (!data?.id) {
       navigate("/login");
