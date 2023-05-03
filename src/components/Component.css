@@ -1,5 +1,5 @@
 * {
-    margin: 0 ;
+    margin: 0;
     padding: 0;
     box-sizing: border-box !important;
 }
@@ -14,14 +14,14 @@ form .form-control:focus {
     border-color: #c9c3c3;
 }
 
-.app{
-    height:90vh;
+.app {
+    height: 90vh;
     display: flex;
     align-items: center;
     justify-content: center;
 }
 
-.container_Wrapper{
+.container_Wrapper {
     border: 1px solid rgb(202, 197, 197);
     height: 450px;
     width: 400px;
@@ -31,7 +31,7 @@ form .form-control:focus {
     flex-direction: column;
 }
 
-.container_Wrapper_Login{
+.container_Wrapper_Login {
     border: 1px solid rgb(202, 197, 197);
     height: 350px;
     width: 400px;
@@ -41,25 +41,26 @@ form .form-control:focus {
     flex-direction: column;
 }
 
-.app__headerWrapper{
+.app__headerWrapper {
     display: flex;
     justify-content: center;
     padding: 5px;
 }
 
-.input_values{
+.input_values {
     display: flex;
     align-items: center;
     flex-direction: column;
 }
 
-.input_values input{
+.input_values input {
     height: 40px;
     width: 300px;
     margin-top: 10px;
     padding-left: 10px;
 }
-.btn_class{
+
+.btn_class {
     height: 40px;
     width: 300px !important;
     margin-top: 10px;
@@ -68,29 +69,29 @@ form .form-control:focus {
     background-color: rgb(239, 66, 124);
 }
 
-.End_container{
+.End_container {
     width: inherit;
     display: flex;
     align-items: center;
     justify-content: center;
 }
 
-.Goto_Login{
+.Goto_Login {
     display: flex;
     justify-content: center;
     margin-top: 10px;
 }
 
-a{
+a {
     text-decoration: none;
     cursor: pointer;
 }
 
-.logo_Registration{
+.logo_Registration {
     height: 35px;
 }
 
-.app_add_image_wrapper{
+.app_add_image_wrapper {
     width: 300px;
     height: 100px;
     display: flex;
@@ -98,18 +99,18 @@ a{
     justify-content: center;
 }
 
-.app_add_image_wrapper img{
+.app_add_image_wrapper img {
     background-size: cover;
     background-position: center;
 
 }
 
-.create_bg{
+.create_bg {
     background-color: #fafafa;
     height: 100px;
 }
 
-.posting{
+.posting {
     height: 70vh;
     overflow: scroll;
     background-color: #fafafa;
@@ -117,11 +118,11 @@ a{
 
 .posting::-webkit-scrollbar {
     display: none;
-  }
+}
 
-  /* post css */
+/* post css */
 
-  .post{
+.post {
     width: 100%;
     height: auto;
     background: #fff;
@@ -129,7 +130,7 @@ a{
     margin-top: 20px;
 }
 
-.info{
+.info {
     width: 100%;
     height: 60px;
     display: flex;
@@ -138,7 +139,7 @@ a{
     padding: 0 10px;
 }
 
-.info .username{
+.info .username {
     width: auto;
     font-weight: bold;
     color: #000;
@@ -146,62 +147,62 @@ a{
     margin-left: 10px;
 }
 
-.info .options{
+.info .options {
     height: 10px;
     cursor: pointer;
 }
 
-.info .user{
+.info .user {
     display: flex;
     align-items: center;
 }
 
-.info .profile-pic{
+.info .profile-pic {
     height: 40px !important;
     width: 40px !important;
     padding: 0;
     background: none;
 }
 
-.info .profile-pic img{
+.info .profile-pic img {
     border: none;
     height: inherit;
     width: inherit;
     background-size: cover;
 }
 
-.post-image{
+.post-image {
     width: 100%;
     height: 500px;
     object-fit: cover;
 }
 
-.post-content{
+.post-content {
     width: 100%;
     padding: 20px;
 }
 
-.likes{
+.likes {
     font-weight: bold;
 }
 
-.description{
+.description {
     margin: 5px 0;
     font-size: 14px;
     line-height: 20px;
 }
 
-.description span{
+.description span {
     font-weight: bold;
     margin-right: 10px;
 }
 
-.post-time{
+.post-time {
     color: rgba(0, 0, 0, 0.5);
     font-size: 12px;
 }
 
-.comment-wrapper{
+.comment-wrapper {
     width: 100%;
     height: 50px;
     border-radius: 1px solid #dfdfdf;
@@ -210,11 +211,11 @@ a{
     align-items: center;
 }
 
-.comment-wrapper .icon{
+.comment-wrapper .icon {
     height: 30px;
 }
 
-.comment-box{
+.comment-box {
     width: 80%;
     height: 100%;
     border: none;
@@ -223,7 +224,7 @@ a{
 }
 
 .comment-btn,
-.action-btn{
+.action-btn {
     width: 70px;
     height: 100%;
     background: none;
@@ -235,7 +236,7 @@ a{
     opacity: 0.5;
 }
 
-.reaction-wrapper{
+.reaction-wrapper {
     width: 100%;
     height: 50px;
     display: flex;
@@ -243,14 +244,12 @@ a{
     align-items: center;
 }
 
-.reaction-wrapper .icon{
+.reaction-wrapper .icon {
     height: 25px;
     margin: 0;
     margin-right: 20px;
 }
 
-.reaction-wrapper .icon.save{
+.reaction-wrapper .icon.save {
     margin-left: auto;
 }
-
-

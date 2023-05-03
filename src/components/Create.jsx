@@ -1,4 +1,4 @@
-import React, { useContext, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import "./Component.css";
 import { providedata } from "../Global/Context";
 
@@ -14,44 +14,46 @@ const LocalStorageCartItem = () => {
 
 const Create = () => {
   const [text, setText] = useState("");
-  const [image, setImage] = useState("");
+  const [image, setImages] = useState([]);
   const { create } = useContext(providedata);
   let { name, id } = LocalStorageCartItem();
- 
+
   const createPost = (e) => {
-      e.preventDefault();
-      //create function ne context.jsx ma banavayu chhe tene value mathii export karavyu chhe and ahithi data pass thay chhe
+    e.preventDefault();
     create({ text, image, name, id });
-    setImage("");
-    setText("")
+    setImages([]);
+    setText("");
   };
 
-  const handleImage = async (e) => {
-    const file = e.target.files[0];
-    const base64 = await convertBase64(file);
-    setImage(base64);
-  };
-  const convertBase64 = (file) => {
-    return new Promise((resolve, reject) => {
-      const fileReader = new FileReader();
-      fileReader.readAsDataURL(file);
-      fileReader.onload = () => {
-        resolve(fileReader.result);
+  //multiple image in base64
+  const handleImage = (event) => {
+    const files = event.target.files;
+    const newImages = [];
+
+    for (let i = 0; i < files.length; i++) {
+      const reader = new FileReader();
+
+      reader.readAsDataURL(files[i]);
+
+      reader.onload = () => {
+        newImages.push(reader.result);
+        if (newImages?.length === files?.length) {
+          setImages([...image, ...newImages]);
+        }
       };
-      fileReader.onerror = (error) => {
-        reject(error);
-      };
-    });
+    }
   };
 
-//   const handleImage = (event) => {
-//     let files = event.target.files[0];
-//     let reader = new FileReader();
-//     reader.readAsDataURL(files);
-//     reader.onload = (e) => {
-//       setImage(e.target.result);
-//     };
-//   };
+  // ------> Store Single Image  <-----
+  //   const handleImage = (event) => {
+  //     let files = event.target.files[0];
+  //     let reader = new FileReader();
+  //     reader.readAsDataURL(files);
+  //     reader.onload = (e) => {
+  //       setImage(e.target.result);
+  //     };
+  //   };
+
   return (
     <>
       <form className="container create_bg" onSubmit={createPost}>
@@ -84,7 +86,7 @@ const Create = () => {
             type="file"
             className="d-none"
             id="fileInput"
-            // accept=".jpg, .jpeg, .png, .webp"
+            multiple
             onChange={handleImage}
             required
           />
