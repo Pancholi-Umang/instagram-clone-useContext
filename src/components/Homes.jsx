@@ -1,9 +1,9 @@
-import React, { useContext, useEffect } from "react";
+import React, { useContext } from "react";
 import "./Component.css";
 import Create from "./Create";
+import { providedata } from "../Global/Context";
 import "bootstrap/dist/css/bootstrap.min.css";
 import "bootstrap-icons/font/bootstrap-icons.css";
-import { providedata } from "../Global/Context";
 
 
 const LocalStorageCartItem = () => {
@@ -45,7 +45,7 @@ const Homes = () => {
                     </div>
                   </div>
 
-                  {post_value?.image?.map((photos, index) => {
+                  {/* {post_value?.image?.map((photos, index) => {
                     return (
                       <img
                         key={index}
@@ -54,7 +54,28 @@ const Homes = () => {
                         alt="..."
                       />
                     );
-                  })}
+                  })} */}
+
+
+                  <div
+                    id="carouselExampleSlidesOnly"
+                    className="carousel slide"
+                    data-bs-ride="carousel"
+                  >
+                    <div className="carousel-inner">
+                      {post_value?.image?.map((photos, index) => {
+                        return (
+                          <div key={index} className={`carousel-item ${index == 0 && "active"}`}>
+                            <img
+                              src={photos}
+                              className="post-image d-block w-100"
+                              alt="..."
+                            />
+                          </div>
+                        );
+                      })}
+                    </div>
+                  </div>
 
                   <div className="post-content">
                     <div className="reaction-wrapper mt-0">
