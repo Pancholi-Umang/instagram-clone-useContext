@@ -253,3 +253,7 @@ a {
 .reaction-wrapper .icon.save {
     margin-left: auto;
 }
+
+.icon{
+    cursor: pointer;
+}

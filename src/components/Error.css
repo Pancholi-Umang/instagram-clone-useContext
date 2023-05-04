@@ -91,3 +91,9 @@ figcaption span {
 	    font-size: 8px;
 	}
 }
+
+
+*{
+	box-sizing: border-box;
+}
+
