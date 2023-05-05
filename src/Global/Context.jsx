@@ -6,7 +6,7 @@ export const providedata = createContext();
 const Context = (props) => {
   const [userData, setUserData] = useState([]);
   const [postData, setPostData] = useState([]);
-  
+
   const create = (data) => {
     axios
       ?.post(`https://644f9340ba9f39c6ab66e61a.mockapi.io/all_posts`, data)
@@ -20,7 +20,10 @@ const Context = (props) => {
   };
 
   const removePost = (RemovePostId) => {
-    axios.delete(`https://644f9340ba9f39c6ab66e61a.mockapi.io/all_posts/${RemovePostId}`)
+    axios
+      .delete(
+        `https://644f9340ba9f39c6ab66e61a.mockapi.io/all_posts/${RemovePostId}`
+      )
       .then((res) => {
         console.log(res?.data);
         getPost();
@@ -42,12 +45,25 @@ const Context = (props) => {
       .then((res) => setPostData(res?.data));
   };
 
+  const commentPosting = async (data) => {
+    console.log(data);
+    await axios
+      ?.put(`https://644f9340ba9f39c6ab66e61a.mockapi.io/all_posts/${data?.post_id}`,data)
+      .then((res) => {
+        console.log(res?.data);
+        getPost();
+      })
+      .catch((error) => console.error(error));
+  };
+
   useEffect(() => {
     GetUsers();
     getPost();
   }, []);
   return (
-    <providedata.Provider value={{ userData, create, postData, removePost }}>
+    <providedata.Provider
+      value={{ userData, create, postData, removePost, commentPosting }}
+    >
       {props.children}
     </providedata.Provider>
   );

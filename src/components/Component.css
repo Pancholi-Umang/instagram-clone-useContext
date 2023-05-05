@@ -111,7 +111,7 @@ a {
 }
 
 .posting {
-    height: 70vh;
+    height: 75vh;
     overflow: scroll;
     background-color: #fafafa;
 }
@@ -233,7 +233,6 @@ a {
     text-transform: capitalize;
     font-size: 16px;
     color: rgb(0, 162, 255);
-    opacity: 0.5;
 }
 
 .reaction-wrapper {
