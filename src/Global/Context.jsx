@@ -36,8 +36,8 @@ const Context = (props) => {
       });
   };
 
-  const GetUsers = () => {
-    axios
+  const GetUsers = async () => {
+    await axios
       .get(`https://644f9340ba9f39c6ab66e61a.mockapi.io/users`)
       .then((res) => setUserData(res?.data));
   };
@@ -50,12 +50,8 @@ const Context = (props) => {
 
   const commentPosting = async (data) => {
     console.log(data);
-    await axios
-      ?.put(
-        `https://644f9340ba9f39c6ab66e61a.mockapi.io/all_posts/${data?.post_id}`,
-        data
-      )
-      .then((res) => {
+    await axios?.put(`https://644f9340ba9f39c6ab66e61a.mockapi.io/all_posts/${data?.post_id}`,data)
+      ?.then((res) => {
         console.log(res?.data);
         getPost();
       })
@@ -101,6 +97,18 @@ const Context = (props) => {
     }
   };
 
+  const deletePostComment = async ({filter,post_id}) => {
+    console.log(filter)
+    await axios?.put(`https://644f9340ba9f39c6ab66e61a.mockapi.io/all_posts/${post_id}`,{
+      comment:filter
+    })
+      ?.then((res) => {
+        console.log(res?.data);
+        getPost();
+      })
+      .catch((error) => console.error(error));
+  }
+
   useEffect(() => {
     GetUsers();
     getPost();
@@ -114,6 +122,7 @@ const Context = (props) => {
         removePost,
         commentPosting,
         editPostView,
+        deletePostComment,
       }}
     >
       {props.children}

@@ -2,23 +2,15 @@ import React, { useState } from "react";
 import { Carousel } from "react-bootstrap";
 import { useNavigate } from "react-router-dom";
 
-const Post = ({
-  removePost,
-  post_value,
-  id,
-  name,
-  commentPosting,
-}) => {
+const Post = ({ removePost, post_value, id, name, commentPosting, deletePostComment }) => {
   const deletePost = (postId) => {
     removePost(postId);
   };
-
   const date = new Date(post_value?.createdAt);
 
   const [userComment, setUserComment] = useState("");
   const PostComment = (post_id) => {
     if (userComment?.length !== 0) {
-      console.log(post_value);
       commentPosting({
         post_id: post_value?.post_id,
         comment: [...post_value?.comment, { id, name, post_id, userComment }],
@@ -36,6 +28,14 @@ const Post = ({
   const Editdata = (id) => {
     navigate(`/edit-items/${id}`);
   };
+
+  const commentDelete = (val) => {
+    const {post_id} = val;
+    const filter = post_value?.comment?.filter((value)=>{
+      return value !== val
+    })
+    deletePostComment({filter,post_id})
+  }
 
   return (
     <>
@@ -70,7 +70,7 @@ const Post = ({
                 );
               })}
             </Carousel>
-            
+
             <div className="post-content">
               <div className="reaction-wrapper mt-0">
                 <i className="bi bi-heart icon"></i>
@@ -94,11 +94,19 @@ const Post = ({
               </p>
               <div className="description">
                 {post_value?.comment?.map((value, index) => {
+                  // comment valu
                   return (
-                    <div key={index}>
-                      <p>
+                    <div key={index} className="d-flex justify-content-between " style={{ height: "20px" }}>
+                      <p className="d-inline">
                         <strong>{value?.name}</strong>&nbsp;{value?.userComment}
                       </p>
+                      {value?.id === id ? (
+                        <span>
+                          <i className="bi bi-pencil-square icon" ></i>
+                          <i className="bi bi-trash save icon" style={{ marginLeft: "15px" }} onClick={()=>commentDelete(value)}></i>
+                        </span>
+                      ) : null}
+
                     </div>
                   );
                 })}
