@@ -4,7 +4,6 @@ import Create from "./Create";
 import { providedata } from "../Global/Context";
 import "bootstrap/dist/css/bootstrap.min.css";
 import "bootstrap-icons/font/bootstrap-icons.css";
-
 import Post from "./Post";
 
 const LocalStorageCartItem = () => {
@@ -20,7 +19,6 @@ const LocalStorageCartItem = () => {
 const Homes = () => {
   const { postData, removePost, commentPosting } = useContext(providedata);
   let { id, name } = LocalStorageCartItem();
-
   return (
     <div className="container">
       <div className="w-50 my-3">
@@ -45,7 +43,3 @@ const Homes = () => {
 };
 
 export default Homes;
-
-{
-  /*  */
-}

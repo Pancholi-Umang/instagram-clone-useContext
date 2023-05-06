@@ -8,6 +8,7 @@ import Registration from "./components/Registration";
 import Context from "./Global/Context";
 import Error from "./components/Error";
 import Profile from "./components/Profile";
+import EditPost from "./components/EditPost";
 
 function App() {
   return (
@@ -20,6 +21,7 @@ function App() {
             <Route exact path="/login" element={<Login />} />
             <Route exact path="/register" element={<Registration />} />
             <Route exact path="/profile" element={<Profile />} />
+            <Route exact path="/edit-items/:user_ids" element={<EditPost />} />
             <Route exact path="/*" element={<Error />} />
           </Routes>
         </BrowserRouter>
