@@ -10,6 +10,7 @@ import Error from "./components/Error";
 import Profile from "./components/Profile";
 import EditPost from "./components/EditPost";
 import EditComment from "./components/EditComment";
+import LikePageDetail from "./components/LikePageDetail";
 
 function App() {
   return (
@@ -24,6 +25,7 @@ function App() {
             <Route exact path="/profile" element={<Profile />} />
             <Route exact path="/edit-items/:user_ids" element={<EditPost />} />
             <Route exact path="/edit-comment/:post_id/:indexNumber" element={<EditComment />} />
+            <Route exact path="/perticularPostLike/:likes_post_is" element={<LikePageDetail />} />
             <Route exact path="/*" element={<Error />} />
           </Routes>
         </BrowserRouter>

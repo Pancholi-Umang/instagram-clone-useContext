@@ -47,6 +47,8 @@ const Context = (props) => {
   };
 
   const commentPosting = async (data) => {
+    // ahiya chhe ne banne field ne uipdate karavi chhe userComent and post_id
+    console.log(data)
     await axios?.put(`https://644f9340ba9f39c6ab66e61a.mockapi.io/all_posts/${data?.post_id}`,data)
       ?.then((res) => {
         console.log(res?.data);
@@ -54,6 +56,16 @@ const Context = (props) => {
       })
       .catch((error) => console.error(error));
   };
+
+  const PostToLike = async (data) => {
+    console.log(data)
+    await axios?.put(`https://644f9340ba9f39c6ab66e61a.mockapi.io/all_posts/${data?.post_id}`,data)
+      ?.then((res) => {
+        console.log(res?.data);
+        getPost();
+      })
+      .catch((error) => console.error(error));
+  }
 
   const editPostView = async ({ myState, image, emptyImage, user_ids }) => {
     if (myState?.length !== 0 && image?.length !== 0) {
@@ -95,6 +107,7 @@ const Context = (props) => {
   };
 
   const userCommentEdit = async ({post_id,changeComment}) => {
+
     await axios?.put(`https://644f9340ba9f39c6ab66e61a.mockapi.io/all_posts/${post_id}`,{
       comment:changeComment
     })
@@ -116,6 +129,16 @@ const Context = (props) => {
       .catch((error) => console.error(error));
   }
 
+  const deletePostLike = async ({remove,post_id}) => {
+    await axios?.put(`https://644f9340ba9f39c6ab66e61a.mockapi.io/all_posts/${post_id}`,{
+      like:remove
+    })
+      ?.then((res) => {
+        console.log(res?.data);
+        getPost();
+      })
+      .catch((error) => console.error(error));
+  }
   useEffect(() => {
     GetUsers();
     getPost();
@@ -124,13 +147,15 @@ const Context = (props) => {
     <providedata.Provider
       value={{
         userData,
-        create,
         postData,
+        create,
         removePost,
         commentPosting,
         editPostView,
         deletePostComment,
         userCommentEdit,
+        PostToLike,
+        deletePostLike,
       }}
     >
       {props.children}

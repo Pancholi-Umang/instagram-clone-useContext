@@ -17,7 +17,7 @@ const LocalStorageCartItem = () => {
 };
 
 const Homes = () => {
-  const { postData, removePost, commentPosting, deletePostComment } = useContext(providedata);
+  const { postData, removePost, commentPosting, deletePostComment, PostToLike, deletePostLike } = useContext(providedata);
   let { id, name } = LocalStorageCartItem();
   return (
     <div className="container">
@@ -35,6 +35,8 @@ const Homes = () => {
               name={name}
               commentPosting={commentPosting}
               deletePostComment={deletePostComment}
+              PostToLike={PostToLike}
+              deletePostLike={deletePostLike}
             />
           );
         })}
