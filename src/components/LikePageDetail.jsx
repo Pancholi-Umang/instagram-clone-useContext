@@ -22,9 +22,9 @@ const LikePageDetail = () => {
             <table className="table table-dark">
                 <thead>
                     <tr>
-                        <th scope="col">id</th>
+                        {/* <th scope="col">id</th> */}
+                        {/* <th scope="col">post id</th> */}
                         <th scope="col">Name</th>
-                        <th scope="col">post id</th>
                         <th scope="col">Profile_Pic</th>
                     </tr>
                 </thead>
@@ -34,9 +34,9 @@ const LikePageDetail = () => {
 
                             return (
                                 <tr key={values?.id}>
-                                    <th scope="row">{values?.id}</th>
+                                    {/* <th scope="row">{values?.id}</th> */}
                                     <td>{values?.name}</td>
-                                    <td>{values?.post_id}</td>
+                                    {/* <td>{values?.post_id}</td> */}
                                     <td>profile-picture</td>
                                 </tr>
                             )

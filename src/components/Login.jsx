@@ -33,13 +33,13 @@ const Login = () => {
       const userExist = checkUsers?.userData?.filter((user) => {
         return user?.email === values?.email && user?.password === values?.password
       })
-
-      // if (userExist?.length === 0) {
-      //   localStorage.setItem('User', JSON.stringify([]));
-      // } else {
-      //   localStorage.setItem('User', JSON.stringify(userExist[0]));
-      // }
-      localStorage.setItem('User', JSON.stringify(userExist[0]));
+      console.log(userExist)
+      if (userExist?.length === 0) {
+          localStorage.setItem('User',JSON.stringify([]));
+      } else {
+        localStorage.setItem('User', JSON.stringify(userExist[0]));
+      }
+      // localStorage.setItem('User', JSON.stringify(userExist[0]));
       formik?.resetForm();
       navigate('/')
     },
