@@ -9,7 +9,7 @@ import { useNavigate } from "react-router-dom";
 
 const LocalStorageCartItem = () => {
   let userDetails = localStorage.getItem("User");
-  
+
   if (userDetails) {
     return JSON.parse(localStorage.getItem("User"));
   } else {
@@ -23,35 +23,36 @@ const initialValues = {
 
 
 const Login = () => {
-  
+
   const checkUsers = useContext(providedata);
   const navigate = useNavigate();
   const formik = useFormik({
     initialValues,
     validationSchema: signupSchema,
     onSubmit: (values) => {
-      const userExist = checkUsers?.userData?.filter((user)=>{
+      const userExist = checkUsers?.userData?.filter((user) => {
         return user?.email === values?.email && user?.password === values?.password
       })
 
-      if(userExist?.length === 0){
-        localStorage.setItem('User', JSON.stringify([]));
-      }else{
-        localStorage.setItem('User', JSON.stringify(userExist[0]));
-      }
+      // if (userExist?.length === 0) {
+      //   localStorage.setItem('User', JSON.stringify([]));
+      // } else {
+      //   localStorage.setItem('User', JSON.stringify(userExist[0]));
+      // }
+      localStorage.setItem('User', JSON.stringify(userExist[0]));
       formik?.resetForm();
       navigate('/')
     },
   });
-  
+
   const login_true = LocalStorageCartItem();
-  useEffect(()=>{
-    if(!login_true?.id){
-      navigate('/login')    
-    }else{
+  useEffect(() => {
+    if (!login_true?.id) {
+      navigate('/login')
+    } else {
       navigate('/')
     }
-  },[])
+  }, [])
 
   return (
     <div className="app">
@@ -95,7 +96,7 @@ const Login = () => {
         </div>
         <div className="Goto_Login">
           <div>
-            Don't have an account ? 
+            Don't have an account ?
             <Link to="/register" className="text-primary">
               &nbsp;Register
             </Link>

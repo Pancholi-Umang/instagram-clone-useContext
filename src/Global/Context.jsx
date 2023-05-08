@@ -8,8 +8,6 @@ const Context = (props) => {
   const [userData, setUserData] = useState([]);
   const [postData, setPostData] = useState([]);
 
-  // const navigate = useNavigate();
-
   const create = (data) => {
     axios
       ?.post(`https://644f9340ba9f39c6ab66e61a.mockapi.io/all_posts`, data)
@@ -49,7 +47,6 @@ const Context = (props) => {
   };
 
   const commentPosting = async (data) => {
-    console.log(data);
     await axios?.put(`https://644f9340ba9f39c6ab66e61a.mockapi.io/all_posts/${data?.post_id}`,data)
       ?.then((res) => {
         console.log(res?.data);
@@ -97,8 +94,18 @@ const Context = (props) => {
     }
   };
 
+  const userCommentEdit = async ({post_id,changeComment}) => {
+    await axios?.put(`https://644f9340ba9f39c6ab66e61a.mockapi.io/all_posts/${post_id}`,{
+      comment:changeComment
+    })
+      ?.then((res) => {
+        console.log(res?.data);
+        getPost();
+      })
+      .catch((error) => console.error(error));
+  }
+
   const deletePostComment = async ({filter,post_id}) => {
-    console.log(filter)
     await axios?.put(`https://644f9340ba9f39c6ab66e61a.mockapi.io/all_posts/${post_id}`,{
       comment:filter
     })
@@ -123,6 +130,7 @@ const Context = (props) => {
         commentPosting,
         editPostView,
         deletePostComment,
+        userCommentEdit,
       }}
     >
       {props.children}
