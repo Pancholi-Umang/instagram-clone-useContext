@@ -31,7 +31,7 @@ const Profile = () => {
           <div className="user text-center">
             <div className="profile">
               <img
-                src="https://i.imgur.com/JgYD2nQ.jpg"
+                src={data?.profile}
                 className="rounded-circle pointer"
                 width="80"
                 onClick={myFunction}

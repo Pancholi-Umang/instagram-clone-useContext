@@ -8,6 +8,17 @@ const Context = (props) => {
   const [userData, setUserData] = useState([]);
   const [postData, setPostData] = useState([]);
 
+
+  const sendregistration = (data) => {
+    axios.post(`https://644f9340ba9f39c6ab66e61a.mockapi.io/users`, data)
+    .then((res)=>{
+      console.log(res?.data);
+      GetUsers();
+    })
+    .catch((error)=>console.log(error))
+  }
+
+
   const create = (data) => {
     axios
       ?.post(`https://644f9340ba9f39c6ab66e61a.mockapi.io/all_posts`, data)
@@ -156,6 +167,7 @@ const Context = (props) => {
         userCommentEdit,
         PostToLike,
         deletePostLike,
+        sendregistration,
       }}
     >
       {props.children}

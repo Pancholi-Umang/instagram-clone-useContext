@@ -16,11 +16,11 @@ const Create = () => {
   const [text, setText] = useState("");
   const [image, setImages] = useState([]);
   const { create } = useContext(providedata);
-  let { name, id } = LocalStorageCartItem();
+  let { name, id, profile } = LocalStorageCartItem();
 
   const createPost = (e) => {
     e.preventDefault();
-    create({ text, image, name, id });
+    create({ text, image, name, id, profile });
     setImages([]);
     setText("");
   };

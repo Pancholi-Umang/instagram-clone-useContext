@@ -4,7 +4,7 @@ import { Link, useNavigate, useParams } from "react-router-dom";
 import { providedata } from "../Global/Context";
 
 const EditComment = () => {
-    
+
     const { post_id, indexNumber } = useParams();
     const [inputValue, setInputValue] = useState("");
     const [matchInputValue, setMatchInputValue] = useState("");
@@ -13,16 +13,16 @@ const EditComment = () => {
     const { userCommentEdit } = useContext(providedata);
 
     const commentUpdated = () => {
-        if(inputValue.length !== 0){
-            const changeComment = matchInputValue?.map((value,index)=>{
-                if(index === number){
+        if (inputValue.length !== 0) {
+            const changeComment = matchInputValue?.map((value, index) => {
+                if (index === number) {
                     return { ...value, userComment: inputValue };
                 }
                 return value
             })
-            userCommentEdit({post_id,changeComment})
+            userCommentEdit({ post_id, changeComment })
             navigate("/")
-        }else{
+        } else {
             alert("please Fill Comment Field")
         }
     }

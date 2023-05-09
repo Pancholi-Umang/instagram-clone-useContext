@@ -39,7 +39,6 @@ const Login = () => {
       } else {
         localStorage.setItem('User', JSON.stringify(userExist[0]));
       }
-      // localStorage.setItem('User', JSON.stringify(userExist[0]));
       formik?.resetForm();
       navigate('/')
     },

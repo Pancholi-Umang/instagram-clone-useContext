@@ -2,11 +2,13 @@ import React, { useState } from "react";
 import { Carousel } from "react-bootstrap";
 import { Link, useNavigate } from "react-router-dom";
 
-const Post = ({ removePost, post_value, id, name, commentPosting, deletePostComment, PostToLike, deletePostLike }) => {
+const Post = ({ removePost, post_value, id, name, commentPosting, deletePostComment, PostToLike, deletePostLike, profile }) => {
   const deletePost = (postId) => {
     removePost(postId);
   };
-  
+
+  // console.log(post_value)
+
   const date = new Date(post_value?.createdAt);
   const navigate = useNavigate();
 
@@ -16,7 +18,7 @@ const Post = ({ removePost, post_value, id, name, commentPosting, deletePostComm
     if (userComment?.length !== 0) {
       commentPosting({
         post_id: post_id,
-        comment: [...post_value?.comment, { id, name, post_id, userComment }],
+        comment: [...post_value?.comment, { id, name, post_id, userComment, profile }],
         // createdAt: post_value?.createdAt, id: post_value?.id, name: post_value?.name,
         // text: post_value?.text, like: post_value?.like, image: post_value?.image,
       });
@@ -53,7 +55,7 @@ const Post = ({ removePost, post_value, id, name, commentPosting, deletePostComm
       console.log("not liked");
       PostToLike({
         post_id: post_id,
-        like: [...post_value?.like, { id, name, post_id }],
+        like: [...post_value?.like, { id, name, post_id, profile }],
       });
     } else {
       console.log("liked");
@@ -78,7 +80,7 @@ const Post = ({ removePost, post_value, id, name, commentPosting, deletePostComm
                 <div className="profile-pic">
                   {/* add image user profile */}
                   <img className="post-image rounded-circle" alt="First slide"
-                    src="https://www.simplilearn.com/ice9/free_resources_article_thumb/what_is_image_Processing.jpg" />
+                    src={post_value?.profile} />
                 </div>
                 <p className="mt-3 username">{post_value?.name}</p>
               </div>
@@ -149,9 +151,11 @@ const Post = ({ removePost, post_value, id, name, commentPosting, deletePostComm
                     <div
                       key={index}
                       className="d-flex justify-content-between "
-                      style={{ height: "20px" }}
+                      style={{ height: "30px" }}
                     >
-                      <p className="d-inline">
+                      
+                      <p className="d-inline ">
+                        <img src={value?.profile} style={{height:"25px",width:"25px",marginRight:"5px", backgroundSize:"cover"}} className="rounded-circle" alt="" />
                         <strong>{value?.name}</strong>&nbsp;{value?.userComment}
                       </p>
                       {/* here only id means login id and value?.id that means login id also */}
