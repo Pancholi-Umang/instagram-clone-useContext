@@ -19,8 +19,6 @@ const Post = ({ removePost, post_value, id, name, commentPosting, deletePostComm
       commentPosting({
         post_id: post_id,
         comment: [...post_value?.comment, { id, name, post_id, userComment, profile }],
-        // createdAt: post_value?.createdAt, id: post_value?.id, name: post_value?.name,
-        // text: post_value?.text, like: post_value?.like, image: post_value?.image,
       });
       setUserComment("");
     } else {
@@ -96,8 +94,10 @@ const Post = ({ removePost, post_value, id, name, commentPosting, deletePostComm
                   <Carousel.Item key={index} interval={500}>
                     <img
                       className="post-image d-block w-100"
+                      onDoubleClick={() => LikePost(post_value?.post_id)}
                       src={i}
                       alt="First slide"
+                      style={{cursor:"pointer"}}
                     />
                   </Carousel.Item>
                 );

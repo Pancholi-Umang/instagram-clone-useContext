@@ -12,7 +12,7 @@ const Context = (props) => {
   const sendregistration = (data) => {
     axios.post(`https://644f9340ba9f39c6ab66e61a.mockapi.io/users`, data)
     .then((res)=>{
-      console.log(res?.data);
+      // console.log(res?.data);
       GetUsers();
     })
     .catch((error)=>console.log(error))
@@ -23,7 +23,7 @@ const Context = (props) => {
     axios
       ?.post(`https://644f9340ba9f39c6ab66e61a.mockapi.io/all_posts`, data)
       .then((response) => {
-        console.log(response);
+        // console.log(response);
         getPost();
       })
       .catch((error) => {
@@ -37,7 +37,7 @@ const Context = (props) => {
         `https://644f9340ba9f39c6ab66e61a.mockapi.io/all_posts/${RemovePostId}`
       )
       .then((res) => {
-        console.log(res?.data);
+        // console.log(res?.data);
         getPost();
       })
       .catch((error) => {
@@ -62,7 +62,7 @@ const Context = (props) => {
     console.log(data)
     await axios?.put(`https://644f9340ba9f39c6ab66e61a.mockapi.io/all_posts/${data?.post_id}`,data)
       ?.then((res) => {
-        console.log(res?.data);
+        // console.log(res?.data);
         getPost();
       })
       .catch((error) => console.error(error));
@@ -72,7 +72,7 @@ const Context = (props) => {
     console.log(data)
     await axios?.put(`https://644f9340ba9f39c6ab66e61a.mockapi.io/all_posts/${data?.post_id}`,data)
       ?.then((res) => {
-        console.log(res?.data);
+        // console.log(res?.data);
         getPost();
       })
       .catch((error) => console.error(error));
@@ -89,12 +89,11 @@ const Context = (props) => {
           }
         )
         .then((res) => {
-          console.log(res?.data);
+          // console.log(res?.data);
           getPost();
         })
         .catch((error) => {
           console.log(error);
-
         });
 
     } else if (myState?.length !== 0 && image?.length === 0) {
@@ -107,7 +106,7 @@ const Context = (props) => {
           }
         )
         .then((res) => {
-          console.log(res?.data);
+          // console.log(res?.data);
           getPost();
         })
         .catch((error) => console.log(error));
@@ -123,7 +122,7 @@ const Context = (props) => {
       comment:changeComment
     })
       ?.then((res) => {
-        console.log(res?.data);
+        // console.log(res?.data);
         getPost();
       })
       .catch((error) => console.error(error));
@@ -134,7 +133,7 @@ const Context = (props) => {
       comment:filter
     })
       ?.then((res) => {
-        console.log(res?.data);
+        // console.log(res?.data);
         getPost();
       })
       .catch((error) => console.error(error));
@@ -145,11 +144,22 @@ const Context = (props) => {
       like:remove
     })
       ?.then((res) => {
-        console.log(res?.data);
+        // console.log(res?.data);
         getPost();
       })
       .catch((error) => console.error(error));
   }
+
+  const putdata = async (data) => {
+    await axios?.put(`https://644f9340ba9f39c6ab66e61a.mockapi.io/users/${data?.id}`,data)
+      ?.then((res) => {
+        // console.log(res?.data);
+        getPost();
+        localStorage.setItem("User", JSON.stringify(res?.data))
+      })
+      .catch((error) => console.error(error));
+  }
+
   useEffect(() => {
     GetUsers();
     getPost();
@@ -168,6 +178,7 @@ const Context = (props) => {
         PostToLike,
         deletePostLike,
         sendregistration,
+        putdata,
       }}
     >
       {props.children}

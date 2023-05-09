@@ -11,10 +11,11 @@ import Profile from "./components/Profile";
 import EditPost from "./components/EditPost";
 import EditComment from "./components/EditComment";
 import LikePageDetail from "./components/LikePageDetail";
+import EditProfile from "./components/EditProfile";
 
 function App() {
   return (
-    <div>
+    <div className="">
       <Context>
         <BrowserRouter>
           <Navbar />
@@ -26,6 +27,7 @@ function App() {
             <Route exact path="/edit-items/:user_ids" element={<EditPost />} />
             <Route exact path="/edit-comment/:post_id/:indexNumber" element={<EditComment />} />
             <Route exact path="/perticularPostLike/:likes_post_is" element={<LikePageDetail />} />
+            <Route exact path="/profile/edit_profile/:profile_id" element={<EditProfile />} />
             <Route exact path="/*" element={<Error />} />
           </Routes>
         </BrowserRouter>

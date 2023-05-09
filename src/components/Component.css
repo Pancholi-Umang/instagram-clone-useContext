@@ -111,12 +111,12 @@ a {
 }
 
 .posting {
-    height: 75vh;
+    height: 70vh;
     overflow: scroll;
     background-color: #fafafa;
 }
 
-.posting::-webkit-scrollbar {
+::-webkit-scrollbar {
     display: none;
 }
 

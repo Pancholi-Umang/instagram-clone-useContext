@@ -15,7 +15,7 @@ const initialValues = {
 };
 
 const Registration = () => {
-  
+
   const { sendregistration } = useContext(providedata);
   const [imageSrc, setImageSrc] = useState("");
   const [imageblank, setImageBlank] = useState(startImage)
@@ -29,10 +29,10 @@ const Registration = () => {
     validationSchema: signupSchema,
     onSubmit: (values) => {
       sendregistration({
-        name:values?.name,
-        email:values?.email,
-        password:values?.password,
-        profile:imageSrc
+        name: values?.name,
+        email: values?.email,
+        password: values?.password,
+        profile: imageSrc
       })
       formik?.resetForm();
       navigate("/")
@@ -62,27 +62,27 @@ const Registration = () => {
           />
         </div>
         <div className="app_add_image_wrapper">
-                                          {/* making a toggle image start */}
-         {
-           imageSrc == "" ? (
-            <img
-            src={imageblank}
-            alt="Add Image"
-            style={{ height: "80px", width: "80px" }}
-            className="rounded-circle"
-            onClick={myFunction}
-          />
-           ):(
-            <img
-            src={imageSrc}
-            alt="Add Image"
-            style={{ height: "80px", width: "80px" }}
-            className="rounded-circle"
-            onClick={myFunction}
-          />
-           )
-         }
-                                {/* making a toggle image end */}
+          {/* making a toggle image start */}
+          {
+            imageSrc == "" ? (
+              <img
+                src={imageblank}
+                alt="Add Image"
+                style={{ height: "80px", width: "80px" }}
+                className="rounded-circle"
+                onClick={myFunction}
+              />
+            ) : (
+              <img
+                src={imageSrc}
+                alt="Add Image"
+                style={{ height: "80px", width: "80px" }}
+                className="rounded-circle"
+                onClick={myFunction}
+              />
+            )
+          }
+          {/* making a toggle image end */}
           <input
             type="file"
             className="d-none"

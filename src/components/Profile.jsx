@@ -1,5 +1,5 @@
-import React, { useContext } from "react";
-import { providedata } from "../Global/Context";
+import React from "react";
+import { Link } from "react-router-dom";
 
 const LocalStorageCartItem = () => {
   let userDetails = localStorage.getItem("User");
@@ -12,14 +12,8 @@ const LocalStorageCartItem = () => {
 }; 
 
 const Profile = () => {
-  const checkUsers = useContext(providedata);
-  console.log(checkUsers?.userData)
-
-  const myFunction = () => {
-    document.getElementById('clickImage').click();
-  }
   const data = LocalStorageCartItem();
-  console.log(data)
+
   return (
     <div className="profile_body">
       <div className="profile_container d-flex justify-content-center align-items-center">
@@ -32,17 +26,16 @@ const Profile = () => {
             <div className="profile">
               <img
                 src={data?.profile}
-                className="rounded-circle pointer"
-                width="80"
-                onClick={myFunction}
+                className="my-2 pointer"
+                width="100"
+                height="100"
               />
             </div>
           </div>
-          <input type="file" className="d-none" id="clickImage" />
           <div className="my-3 text-center">
             <h4 className="mb-0">{data?.name}</h4>
             <span className="text-muted d-block mb-2">{data?.email}</span>
-            <button className="btn btn-primary btn-sm follow">EDIT PROFILE</button>
+            <Link to={`edit_profile/${data?.id}`} className="btn btn-primary btn-sm follow">EDIT PROFILE</Link>
           </div>
         </div>
       </div>

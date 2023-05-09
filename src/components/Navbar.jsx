@@ -100,12 +100,12 @@ const Navbar = () => {
             />
             {Login === true ? (
               <Link className="nav-link" to="/profile">
-                <i
-                  style={{ fontSize: "30px", color: "black" }}
-                  className="bi bi-person-circle"
-                ></i>
-              </Link>
-            ) : null}
+                <img src={login_true?.profile} alt="" style={{height:"35px",width:"35px"}} className="rounded-circle"/>
+                </Link> 
+            ) :  <i
+            style={{ fontSize: "30px", color: "black" }}
+            className="bi bi-person-circle"
+          ></i>}
           </form>
         </div>
       </div>
